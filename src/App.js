@@ -1,26 +1,31 @@
+export default App;
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route } from 'react-router-dom'
+import { createGlobalStyle } from "styled-components";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import Register  from './components/login/Register';
+import Login  from './components/login/Login';
+import SurveyDashboard  from './components/survey/SurveyDashboard';
+
+
+const GlobalStyles = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+  body {
+    font-family: 'Roboto', sans-serif;
+  };
+`
+
+const App = () => {
+    return(
+      <>
+        <GlobalStyles />
+        <Switch>
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login}/>
+          <Route exact path="/" component={SurveyDashboard}/>
+        </Switch>
+      </>
+    )
+  }
 
 export default App;
