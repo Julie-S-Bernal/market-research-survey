@@ -1,37 +1,31 @@
-// import React, { useCallback } from "react";
-// import { withRouter } from "react-router";
-// import app from "../../firebaseConfig";
+import React, {useState} from 'react';
+import {redirect, withRouter} from 'react-router-dom';
 
-// const SignUp = ({ history }) => {
-//   const handleSignUp = useCallback(async event => {
-//     event.preventDefault();
-//     const { email, password } = event.target.elements;
-//     try {
-//       await app
-//         .auth()
-//         .createUserWithEmailAndPassword(email.value, password.value);
-//       history.push("/");
-//     } catch (error) {
-//       alert(error);
-//     }
-//   }, [history]);
+import firebaseConfig from '../../firebaseConfig'
 
-//   return (
-//     <div>
-//       <h1>Sign up</h1>
-//       <form onSubmit={handleSignUp}>
-//         <label>
-//           Email
-//           <input name="email" type="email" placeholder="Email" />
-//         </label>
-//         <label>
-//           Password
-//           <input name="password" type="password" placeholder="Password" />
-//         </label>
-//         <button type="submit">Sign Up</button>
-//       </form>
-//     </div>
-//   );
-// };
+const Register = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+    //Improve name of variable
+  const [redirect, setRedirect] = useState(false);
 
-// export default withRouter(SignUp);
+  const register = async(e) => {
+    e.preventDefault();
+    let user = await firebaseConfig.register(email, password)
+    console.log(user);
+  }
+
+  return (
+      <>
+       <form onSubmit={register}>
+           <h1>Create your user profile</h1>
+         <label htmlFor='email'>Email: </label>
+         <input type="email" name='email' onChange={(e) => setEmail(e.target.value)} ></input>
+         <label htmlFor='email'>Password: </label>
+         <input type="password" name='password' onChange={(e) => setPassword(e.target.value)} ></input>
+         <input type='Submit' value='register' />
+       </form>
+      </>
+  )
+}
+export default withRouter(Register);
