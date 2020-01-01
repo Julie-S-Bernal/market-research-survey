@@ -36,6 +36,11 @@ class FirebaseConfig{
         return user;
     }
 
+    async getUser(){
+    return new Promise(resolve =>{
+        this.auth.onAuthStateChanged(resolve);
+    })};
+
     async logout(){
         await firebase.auth().signOut().catch(error => {
             console.log(error);

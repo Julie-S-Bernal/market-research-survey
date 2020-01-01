@@ -1,8 +1,8 @@
-import React, { useState } from 'react'; //in order to consume context need to import useContext from React, don't forget!
+import React, { useState, useEffect } from 'react'; //in order to consume context need to import useContext from React, don't forget!
 import styled from 'styled-components';
 import {withRouter} from 'react-router-dom';
 import { Container, Col, Row } from 'styled-bootstrap-grid';
-//the actual data that will be consumed
+import firebaseConfig from '../../firebaseConfig'
 
 const StyledContainer= styled.div`
   align-items: center;
@@ -28,12 +28,22 @@ const Separator = styled.div`
 
 const SurveyDashboard = (props) => {
   const [userState, setUserState] = useState(null);
-  let buttons;
+
+  useEffect(()=> {
+    firebaseConfig.getUser().then(user => {
+      if(user){
+        setUserState(user);
+      }
+    })
+  })
 
   const logout = () => {
-    console.log('user is loged out')
+    firebaseConfig.logout();
+    setUserState(null);
+    props.history.replace('/login');
     }
 
+    let buttons;
 
   if (userState != null) {
       buttons = (
