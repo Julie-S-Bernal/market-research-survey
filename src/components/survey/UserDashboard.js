@@ -1,6 +1,7 @@
 import React, { useState } from 'react'; //in order to consume context need to import useContext from React, don't forget!
 import styled from 'styled-components';
 import { Container, Col, Row } from 'styled-bootstrap-grid';
+
 import AuthenticationButtons from '../userAuthentication/authenticationButtons'
 //the actual data that will be consumed
 

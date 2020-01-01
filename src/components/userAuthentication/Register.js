@@ -12,11 +12,11 @@ const Register = (props) => {
     event.preventDefault();
     let response = await firebaseConfig.register(email, password)
     if(response.hasOwnProperty('message')){
-        setRegisterError(true)
-      }
-      if(response.hasOwnProperty('user')){
-        props.history.push('/')
-      }
+      setRegisterError(true)
+    }
+    if(response.hasOwnProperty('user')){
+      props.history.push('/')
+    }
   }
 
   return (

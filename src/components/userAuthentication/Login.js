@@ -9,15 +9,16 @@ const Login = (props) => {
   const [loginError, setLoginError] = useState(false);
 
   const login = async(event) => {
-      event.preventDefault();
-      let response = await firebaseConfig.login(email, password);
-      if(response.hasOwnProperty('message')){
-        setLoginError(true)
-      }
-      if(response.hasOwnProperty('user')){
-        props.history.push('/')
-      }
+    event.preventDefault();
+    let response = await firebaseConfig.login(email, password);
+    if(response.hasOwnProperty('message')){
+      setLoginError(true)
     }
+    if(response.hasOwnProperty('user')){
+      props.history.push('/')
+    }
+  }
+
   return (
       <>
        <form onSubmit={login}>
