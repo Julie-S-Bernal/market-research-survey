@@ -20,19 +20,19 @@ const SurveyDashboard = (props) => {
     firebaseConfig.logout();
     setUserState(null);
     props.history.replace('/login');
-    }
+  }
 
     let buttons;
 
   if (userState != null) {
-      buttons = (
-     <button className='logout' onClick={logout}>Logout</button>
-      )
-    } else {
-      buttons = (
+    buttons = (
+      <button className='logout' onClick={logout}>Logout</button>
+    )
+  } else {
+    buttons = (
       <>
-       <button className='register' onClick={() => props.history.push('/register')} >Register</button>
-       <button className='Login' onClick={() => props.history.push('login')}>Login</button>
+        <button className='register' onClick={() => props.history.push('/register')} >Register</button>
+        <button className='Login' onClick={() => props.history.push('login')}>Login</button>
       </>
     )
   }
