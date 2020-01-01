@@ -24,6 +24,7 @@ class FirebaseConfig{
     async register(email,password){
         const user = await firebase.auth().createUserWithEmailAndPassword(email, password).catch(error => {
           console.log(error);
+          return error;
         });
         return user;
     }
@@ -32,6 +33,7 @@ class FirebaseConfig{
         const user = await firebase.auth().signInWithEmailAndPassword(email, password)
         .catch(error => {
             console.log(error);
+            return error;
         });
         return user;
     }
@@ -44,6 +46,7 @@ class FirebaseConfig{
     async logout(){
         await firebase.auth().signOut().catch(error => {
             console.log(error);
+            return error;
         });
     }
 }
