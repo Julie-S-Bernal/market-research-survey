@@ -2,12 +2,9 @@ import React from 'react';
 import { Route, BrowserRouter as Router } from 'react-router-dom'
 import { createGlobalStyle } from "styled-components";
 
-import { AuthenticationProvider } from './Authentication';
-import AuthenticatedRoute from './utils/authenticatedRoute'
-
 import Register  from './components/userAuthentication/Register';
 import Login  from './components/userAuthentication/Login';
-import SurveyDashboard  from './components/survey/SurveyDashboard';
+import UserDashboard from './components/survey/UserDashboard';
 
 
 const GlobalStyles = createGlobalStyle`
@@ -18,16 +15,16 @@ const GlobalStyles = createGlobalStyle`
 `
 
 const App = () => {
+
     return(
       <>
         <GlobalStyles />
-        <Router>
-          <AuthenticationProvider>
-            <Route exact path='/register' component={Register} />
-            <Route exact path='/login'component={Login}/>
-            <AuthenticatedRoute exact path='/' component={SurveyDashboard}/>
-          </AuthenticationProvider>
-        </Router>
+          <Router>
+            {/* / Add Swicth statement if needed */}
+            <Route exact path="/">
+              <UserDashboard />
+            </Route>
+          </Router>
       </>
     )
   }
