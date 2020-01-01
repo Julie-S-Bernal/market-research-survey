@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, BrowserRouter as Router } from 'react-router-dom'
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
 import { createGlobalStyle } from "styled-components";
 
 import Register  from './components/userAuthentication/Register';
@@ -19,12 +19,14 @@ const App = () => {
     return(
       <>
         <GlobalStyles />
-          <Router>
+        <Router>
+        <Switch>
             {/* / Add Swicth statement if needed */}
-            <Route exact path="/">
-              <UserDashboard />
-            </Route>
-          </Router>
+            <Route exact path="/" component={UserDashboard} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
+         </Switch>
+         </Router>
       </>
     )
   }

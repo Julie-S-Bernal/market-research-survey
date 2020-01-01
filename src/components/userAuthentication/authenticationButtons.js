@@ -1,5 +1,6 @@
 import React, { useState } from 'react'; //in order to consume context need to import useContext from React, don't forget!
 import styled from 'styled-components';
+import {withRouter} from 'react-router-dom';
 import { Container, Col, Row } from 'styled-bootstrap-grid';
 //the actual data that will be consumed
 
@@ -36,13 +37,13 @@ const SurveyDashboard = (props) => {
 
   if (userState != null) {
       buttons = (
-     <buttons className='logout' onClick={logout}>Logout</buttons>
+     <button className='logout' onClick={logout}>Logout</button>
       )
     } else {
       buttons = (
       <>
-       <buttons className='register' to='./register' >Register</buttons>
-       <buttons className='Login' to='./Login'>Login</buttons>
+       <button className='register' onClick={() => props.history.push('/register')} >Register</button>
+       <button className='Login' onClick={() => props.history.push('login')}>Login</button>
       </>
     )
   }
@@ -58,4 +59,4 @@ const SurveyDashboard = (props) => {
   )
 }
 
-export default SurveyDashboard;
+export default withRouter(SurveyDashboard);

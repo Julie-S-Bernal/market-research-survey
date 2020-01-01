@@ -1,47 +1,27 @@
-// import React, { useCallback, useContext } from "react";
-// import { withRouter, Redirect } from "react-router";
-// import app from "../../firebaseConfig";
-// import { AuthenticationContext } from '../../Authentication';
+import React, {useState} from 'react';
+import {redirect, withRouter} from 'react-router-dom';
 
-// const Login = ({ history }) => {
-//   const handleLogin = useCallback(
-//     async event => {
-//       event.preventDefault();
-//       const { email, password } = event.target.elements;
-//       try {
-//         await app
-//           .auth()
-//           .signInWithEmailAndPassword(email.value, password.value);
-//         history.push("/");
-//       } catch (error) {
-//         alert(error);
-//       }
-//     },
-//     [history]
-//   );
+import firebaseConfig from '../../firebaseConfig'
 
-//   const { user } = useContext(AuthenticationContext);
+const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+    //Improve name of variable
+  const [redirect, setRedirect] = useState(false);
 
-//   if (user) {
-//     return <Redirect to="/" />;
-//   }
+  const login = () => {
+      console.log('login user')
+  }
 
-//   return (
-//     <div>
-//       <h1>Log in</h1>
-//       <form onSubmit={handleLogin}>
-//         <label>
-//           Email
-//           <input name="email" type="email" placeholder="Email" />
-//         </label>
-//         <label>
-//           Password
-//           <input name="password" type="password" placeholder="Password" />
-//         </label>
-//         <button type="submit">Log in</button>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default withRouter(Login);
+  return (
+      <>
+       <form onSubmit={login}>
+         <label htmlFor='email'>Email: </label>
+         <input type="email" name='email' onChange={(e) => setEmail(e.target.value)} ></input>
+         <label htmlFor='email'>Password: </label>
+         <input type="password" name='password' onChange={(e) => setPassword(e.target.value)} ></input>
+       </form>
+      </>
+  )
+}
+export default withRouter(Login);

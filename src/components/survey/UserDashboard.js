@@ -32,10 +32,10 @@ const SurveyDashboard = () => {
     <Container >
       <Row>
         <Col col={6}>
-          <AuthenticationButtons />
-        <buttons className='register' >Environement</buttons>
-        <buttons className='logout'>Brexit</buttons>
-        <buttons className='logout'>US</buttons>
+         <AuthenticationButtons />
+        <button className='register' >Environement</button>
+        <button className='logout'>Brexit</button>
+        <button className='logout'>US</button>
         </Col>
       </Row>
     </Container>

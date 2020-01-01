@@ -14,6 +14,8 @@ const configuration = firebase.initializeApp({
     measurementId: "G-2YDNH7FD10"
 });
 
+
+// FIX ISSUE with class and many renitioalization of firebase
 class FirebaseConfig{
     constructor(){
         firebase.initializeApp(configuration);
@@ -44,6 +46,6 @@ class FirebaseConfig{
     }
 }
 
-
-
-export default new FirebaseConfig();
+export default !firebase.apps.length
+  ? firebase.initializeApp(configuration).firestore()
+  : firebase.app().firestore();
