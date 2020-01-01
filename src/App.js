@@ -1,7 +1,9 @@
-export default App;
 import React from 'react';
 import { Route } from 'react-router-dom'
 import { createGlobalStyle } from "styled-components";
+
+import { AuthenticationProvider } from './Authentication';
+import AuthenticatedRoute from './utils/authenticatedRoute'
 
 import Register  from './components/login/Register';
 import Login  from './components/login/Login';
@@ -19,11 +21,11 @@ const App = () => {
     return(
       <>
         <GlobalStyles />
-        <Switch>
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/login" component={Login}/>
-          <Route exact path="/" component={SurveyDashboard}/>
-        </Switch>
+        <AuthenticationProvider>
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login}/>
+            <AuthenticatedRoute exact path="/" component={SurveyDashboard}/>
+        </AuthenticationProvider>
       </>
     )
   }
