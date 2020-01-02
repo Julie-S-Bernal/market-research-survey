@@ -48,11 +48,8 @@ const SurveyDashboard = () => {
  console.log(data && data)
  console.log(data.surveys)
 
-//   const newArray = data && dataset.map(value => value.map(number => number));
 
-// console.log(newArray)
-
-
+// this will return the city from the first address item.
 
   return(
     <Container >
@@ -70,20 +67,34 @@ const SurveyDashboard = () => {
             <div key={i}>
               <div>
                 <h1>{title}</h1>
-                {/* {questions.map((question, j) => <p key={j}>{question}</p>)} */}
+                {console.log('hi', questions.length != 0 && JSON.stringify(questions))}
+                <>
+                  {questions.map((question, j) => (
+                  <div key={j}>
+                    <h1>{question.questionId}</h1>
+                    <h1>{question.questionTitle}</h1>
+                    <>
+                    {question.answerOptions.map((answer, questionId, answerOptions, j) => (
+                  <div key={j}>
+                    <h1>{answer.answerOptions}</h1>
+                    <h1>{answer.text}</h1>
+                    <h1>Selected by respondent: {answer.selectedByRespondents}</h1>
+                  </div>))}
+                  </>
+                  </div>))}
+                  </>
               </div>
             </div>
           ))
         }
        </div>
-        <span>{JSON.stringify(data.surveys)}</span>
-        <hr />
-        <span>Has error: {JSON.stringify(hasError)}</span>
         </div>
         </Col>
       </Row>
     </Container>
   )
 }
+
+
 
 export default SurveyDashboard;
