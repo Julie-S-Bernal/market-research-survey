@@ -62,6 +62,30 @@ const GlobalStyles = createGlobalStyle`
     font-size: 1.2em;
     font-family: 'Roboto', sans-serif;
   }
+
+  button {
+    box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
+    height: 35px;
+    width: 100px;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    background: rgba(59,173,227,1);
+    background: linear-gradient(45deg, rgba(59,173,227,1) 0%, rgba(87,111,230,1) 25%, rgba(152,68,183,1) 51%, rgba(255,53,127,1) 100%);
+    font-size: 12px;
+    border: none;
+    margin-left: 10px;
+    border-radius: 3px;
+    text-align: center;
+
+    span {
+      position: relative;
+      top: 16px;
+    }
+  }
 }`
 
 const App = () => {
