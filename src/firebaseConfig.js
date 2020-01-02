@@ -16,39 +16,36 @@ const configuration = {
 
 class FirebaseConfig{
     constructor(){
-      firebase.initializeApp(configuration);
-      this.auth = firebase.auth();
-      this.firestore = firebase.firestore();
+        firebase.initializeApp(configuration);
+        this.auth = firebase.auth();
+        this.firestore = firebase.firestore();
     }
 
     async register(email,password){
-      const user = await firebase.auth().createUserWithEmailAndPassword(email, password).catch(error => {
-        console.log(error);
-        return error;
-      });
-      return user;
+        const user = await firebase.auth().createUserWithEmailAndPassword(email, password).catch(error => {
+          console.log(error);
+        });
+        return user;
     }
 
     async login(email,password){
-      const user = await firebase.auth().signInWithEmailAndPassword(email, password)
-      .catch(error => {
-        console.log(error);
-        return error;
-      });
-      return user;
+        const user = await firebase.auth().signInWithEmailAndPassword(email, password)
+        .catch(error => {
+            console.log(error);
+        });
+        return user;
     }
 
     async getUser(){
-      return new Promise(resolve =>{
+    return new Promise(resolve =>{
         this.auth.onAuthStateChanged(resolve);
-      })};
+    })};
 
     async logout(){
-      await firebase.auth().signOut().catch(error => {
-        console.log(error);
-        return error;
-    });
-
+        await firebase.auth().signOut().catch(error => {
+            console.log(error);
+        });
+    }
 }
 
 export default new FirebaseConfig();

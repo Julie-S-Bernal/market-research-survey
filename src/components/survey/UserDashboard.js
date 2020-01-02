@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; //in order to consume context need to import useContext from React, don't forget!
+import React, { useState, useEffect } from 'react'; //in order to consume context need to import useContext from React, don't forget!
 import styled from 'styled-components';
 import { Container, Col, Row } from 'styled-bootstrap-grid';
 
@@ -28,15 +28,58 @@ const Separator = styled.div`
 `
 
 const SurveyDashboard = () => {
+  const [data, setDataSet] = useState([]);
+  const [hasError, setErrors] = useState(false);
+
+
+  async function fetchData() {
+    const res = await fetch("https://my-json-server.typicode.com/focaldata/demo/db");
+    res
+      .json()
+      .then(res => setDataSet(res))
+      .catch(err => setErrors(err));
+  }
+
+  useEffect(() => {
+    fetchData();
+  },[]);
+
+
+ console.log(data && data)
+ console.log(data.surveys)
+
+//   const newArray = data && dataset.map(value => value.map(number => number));
+
+// console.log(newArray)
+
+
 
   return(
     <Container >
       <Row>
         <Col col={6}>
-         <AuthenticationButtons />
-        <button className='register' >Environement</button>
-        <button className='logout'>Brexit</button>
-        <button className='logout'>US</button>
+        <AuthenticationButtons />
+        <button className='Environment' >Environment</button>
+        <button className='Brexit'>Brexit</button>
+        <button className='US'>US Elections</button>
+        <div>
+
+        <div>
+        {
+           data.length != 0 && data.surveys.map(({title, questions}, i) => (
+            <div key={i}>
+              <div>
+                <h1>{title}</h1>
+                {/* {questions.map((question, j) => <p key={j}>{question}</p>)} */}
+              </div>
+            </div>
+          ))
+        }
+       </div>
+        <span>{JSON.stringify(data.surveys)}</span>
+        <hr />
+        <span>Has error: {JSON.stringify(hasError)}</span>
+        </div>
         </Col>
       </Row>
     </Container>

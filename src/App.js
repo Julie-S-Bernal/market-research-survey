@@ -20,12 +20,11 @@ const App = () => {
       <>
         <GlobalStyles />
         <Router>
-        <Switch>
-            {/* / Add Swicth statement if needed */}
+          <Switch>
             <Route exact path="/" component={UserDashboard} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
-         </Switch>
+          </Switch>
          </Router>
       </>
     )
