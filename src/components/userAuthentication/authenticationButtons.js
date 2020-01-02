@@ -1,8 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import {withRouter} from 'react-router-dom';
-import { Container, Col, Row } from 'styled-bootstrap-grid';
+
 
 import firebaseConfig from '../../firebaseConfig'
+
+const NavContainer=styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  background: rgba(255,255,255,0.4);
+  border-bottom: 1px solid rgba(225,225,225,0.5);
+  z-index: 1000;
+`;
 
 
 const SurveyDashboard = (props) => {
@@ -38,13 +50,13 @@ const SurveyDashboard = (props) => {
   }
 
   return(
-    <Container >
-      <Row>
-        <Col col={6}>
-          {buttons}
-        </Col>
-      </Row>
-    </Container>
+  <NavContainer>
+    <nav>
+      <ul class="container">
+        {buttons}
+      </ul>
+    </nav>
+  </NavContainer>
   )
 }
 

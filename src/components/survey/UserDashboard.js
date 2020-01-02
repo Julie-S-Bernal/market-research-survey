@@ -1,46 +1,87 @@
-import React, { useState } from 'react'; //in order to consume context need to import useContext from React, don't forget!
+import React, { useState, useEffect } from 'react'; //in order to consume context need to import useContext from React, don't forget!
 import styled from 'styled-components';
 import { Container, Col, Row } from 'styled-bootstrap-grid';
-
+import { VictoryPie } from 'victory';
 import AuthenticationButtons from '../userAuthentication/authenticationButtons'
-//the actual data that will be consumed
 
-const StyledContainer= styled.div`
-  align-items: center;
-  border-radius: 5px;
-  background: #6d658f;
-  width: 100%;
-  padding: 40px;
-  text-decoration: none;
-  box-shadow: -20px -20px 0px 0px rgba(100,100,100, 0.1);
-  `;
-
-const Spacing= styled.div`
-  margin: 10px;
-  background-color: red;
-`;
-
-const Separator = styled.div`
-  background-color: #9485d4;
-  width: 100%;
-  margin-top: 10px;
-  height: 1px;
-`
 
 const SurveyDashboard = () => {
+  const [data, setDataSet] = useState([]);
+  const [hasError, setErrors] = useState(false);
+
+
+  async function fetchData() {
+    const res = await fetch("https://my-json-server.typicode.com/focaldata/demo/db");
+    res
+      .json()
+      .then(res => setDataSet(res))
+      .catch(err => setErrors(err));
+  }
+
+  useEffect(() => {
+    fetchData();
+  },[]);
 
   return(
-    <Container >
+    <Container>
       <Row>
-        <Col col={6}>
-         <AuthenticationButtons />
-        <button className='register' >Environement</button>
-        <button className='logout'>Brexit</button>
-        <button className='logout'>US</button>
+        <Col col={12}>
+          <AuthenticationButtons />
         </Col>
       </Row>
-    </Container>
+      <Row>
+        <Col col={12}>
+          <button className='Environment'>Environment</button>
+          <button className='Brexit'>Brexit</button>
+          <button className='US'>US Elections</button>
+        </Col>
+      </Row>
+      <Row>
+        <Col col={12}>
+          <div>
+            <div>
+              { data.length !== 0 && data.surveys.map(({title, questions}, i) => (
+                <div key={i}>
+                  <div>
+                    <h1>{title}</h1>
+                    <>
+                      {questions.map((question, key, j) => (
+                      <div key={j}>
+                        <h2>{question.questionTitle}</h2>
+                        <div style={{width:'250px', height: '250px'}}>
+                        <VictoryPie
+                        colorScale={['#cf4475', '#f79ebd', '#c3e3e8', '#b0f08b', '#6fc969' ]}
+                        data={[
+                          { x: questions[key].answerOptions[0].text, y: questions[0].answerOptions[0].selectedByRespondents },
+                          { x: questions[key].answerOptions[1].text, y: questions[0].answerOptions[1].selectedByRespondents },
+                          { x: questions[key].answerOptions[2].text, y: questions[0].answerOptions[2].selectedByRespondents },
+                          { x: questions[key].answerOptions[3].text, y: questions[0].answerOptions[1].selectedByRespondents },
+                          { x: questions[key].answerOptions[4].text, y: questions[0].answerOptions[2].selectedByRespondents },
+                        ]}
+                      />
+                      </div>
+                        <>
+                          {question.answerOptions.map((answer, questionId, answerOptions, k) => (
+                            <div key={k}>
+                              {/* <h3>{answer.answerOptions}</h3> */}
+                              <p>{answer.text}</p>
+                              <p>Selected by respondent: <span>{answer.selectedByRespondents}</span></p>
+                            </div>
+                          ))}
+                        </>
+                      </div>))}
+                    </>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Col>
+      </Row>
+  </Container>
   )
 }
+
+
 
 export default SurveyDashboard;
