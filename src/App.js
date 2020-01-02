@@ -86,6 +86,10 @@ const GlobalStyles = createGlobalStyle`
       top: 16px;
     }
   }
+  label {
+    color: #d1a6de;
+    font-family: 'Roboto', sans-serif;
+  }
 }`
 
 const App = () => {
