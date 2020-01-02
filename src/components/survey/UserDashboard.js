@@ -58,23 +58,23 @@ const SurveyDashboard = () => {
                           </Col>
                         </Row>
                       <>
-                      {question.answerOptions.map((answer, questionId, answerOptions, k) => (
-                            <div key={k}>
-                              <p>{answer.text}</p>
-                              <p>Selected by respondent: <span>{answer.selectedByRespondents}</span></p>
-                            </div>
-                          ))}
-                        </>
-                      </div>))}
+                      {question.answerOptions.map((answer, k) => (
+                        <div key={k}>
+                          <p>{answer.text}</p>
+                          <p>Selected by respondent: <span>{answer.selectedByRespondents}</span></p>
+                        </div>
+                      ))}
                     </>
-                  </div>
+                  </div>))}
+                  </>
                 </div>
+              </div>
               ))}
             </div>
           </div>
         </Col>
       </Row>
-  </Container>
+    </Container>
   )
 }
 
