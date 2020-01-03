@@ -17,6 +17,10 @@ mobile-responsiveness
 Error handling
 user-session. main page should not be visible when not logged in.
 color-code question and chart that are related to a same topic rather than having one generic style
+Refactor code to minimize repetition and make sur that good practices are in place
+
+## Future feature
+Enable user to enter their own data on a side pie chart so they could compare the current survey results to their own survey results
 
 ## Final project view
 
@@ -28,9 +32,9 @@ color-code question and chart that are related to a same topic rather than havin
 ### User Flow
 
 <image to be added>
-  
+
 This will be a single app application that will have a usser session and a main page where the user will be able to view all the information.
-  
+
 ### User authentication
 
 The user lands on the page and is asked to either login or register if not authenticated. Once the user is logged they should be redirect to the main page. If the user logout the main page should not be available anymore. 
