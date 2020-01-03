@@ -4,7 +4,10 @@
 Create an app that displays coherently 3 different types of surveys and show them into meaningful charts
 
 ## Side objectif
-Use React hooks + firebase
+Learn more about rendering good charts
+Learn more about Firebase
+Learn more about good rendering of data
+Learn more about splitting the data in the clearest and fatest way in the code
 
 ## Remaining to do
 Add tests
@@ -15,24 +18,29 @@ Error handling
 user-session. main page should not be visible when not logged in.
 color-code question and chart that are related to a same topic rather than having one generic style
 
-## Final project
+## Final project view
 
 <image to be added>
 
 #Process
 ## Solution 1
 
+### User Flow
+
 <image to be added>
   
 This will be a single app application that will have a usser session and a main page where the user will be able to view all the information.
   
-User authentication
+### User authentication
+
 The user lands on the page and is asked to either login or register if not authenticated. Once the user is logged they should be redirect to the main page. If the user logout the main page should not be available anymore. 
 
-main Page
+### main Page
+
 On the main page data will be displayed as pie chart to clearly highlight which choice was propertionally greater. The user should be able to also view the questions, answer and amount of respondent.
 
-Error handling
+### Error handling
+
 If the user has wrong credentials he should not be able to log in
 If the user does not input a correct email he should not be able to log in
 If for some reason the api is down the char should be replaced by an error message
@@ -40,20 +48,20 @@ If a route is not valid an error should be shown with a button so the user cna b
 
 ## Test with jest
 
-Login
+### Login
 Check that on log in user is redirect to / page
 Check that an error is thrown if user enters wrong credentials
 
-Register
+### Register
 Check that on registe user is redirect to / page
 Check that an error is thrown if user enters wrong credentials
 
-Main page
+### Main page
 Check that data is rendered in right fields
 Check that api call is made once on page load
 
 
-Wireframe:
+## Wireframe:
 
 <image to be added>
 
