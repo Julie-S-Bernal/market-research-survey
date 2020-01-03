@@ -75,7 +75,7 @@ const Register = (props) => {
         <Col col={12}>
           <FormWrapper>
             <form onSubmit={register}>
-              <h2 style={{textAlign: 'center'}}>Create your account</h2>
+              <h3 style={{textAlign: 'center'}}>Create your account</h3>
               <label htmlFor='email'>Email: </label>
               <input className='formInput' type="email" name='email' onChange={(event) => setEmail(event.target.value)} ></input>
               <label htmlFor='email'>Password: </label>

@@ -48,6 +48,7 @@ const GlobalStyles = createGlobalStyle`
   }
   h3 {
     color: white;
+    font-size: 1.4em;
     font-family: 'Roboto', sans-serif;
   }
   p {
@@ -87,7 +88,7 @@ const GlobalStyles = createGlobalStyle`
     }
   }
   label {
-    color: #d1a6de;
+    color: white;
     font-family: 'Roboto', sans-serif;
   }
 }`

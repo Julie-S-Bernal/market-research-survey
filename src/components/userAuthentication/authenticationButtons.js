@@ -52,7 +52,7 @@ const SurveyDashboard = (props) => {
   return(
   <NavContainer>
     <nav>
-      <ul class="container">
+      <ul>
         {buttons}
       </ul>
     </nav>

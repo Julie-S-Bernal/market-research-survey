@@ -14,6 +14,9 @@ const FormWrapper=styled.div`
   background-color: #ffffff;
   border-radius: 5px;
   box-shadow: 0 15px 35px rgba(50,50,93,.1),0 5px 15px rgba(0,0,0,.07);
+  background: rgba(255,255,255,0.4);
+  border-bottom: 1px solid rgba(225,225,225,0.5);
+  z-index: 1000;
 
   .formInput{
     position: relative;
@@ -76,7 +79,7 @@ const Login = (props) => {
         <Col col={12}>
           <FormWrapper>
             <form onSubmit={login}>
-              <h2 style={{textAlign: 'center'}}>Sign into your account</h2>
+              <h3 style={{textAlign: 'center'}}>Sign into your account</h3>
               <label htmlFor='email'>Email: </label>
               <input className='formInput' type="email" name='email' onChange={(event) => setEmail(event.target.value)} ></input>
               <label htmlFor='email'>Password: </label>
