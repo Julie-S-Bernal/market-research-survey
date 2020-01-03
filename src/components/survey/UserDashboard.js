@@ -9,7 +9,6 @@ const SurveyDashboard = () => {
   const [data, setDataSet] = useState([]);
   const [hasError, setErrors] = useState(false);
 
-
   async function fetchData() {
     const res = await fetch("https://my-json-server.typicode.com/focaldata/demo/db");
     res
@@ -38,12 +37,12 @@ const SurveyDashboard = () => {
                   <div>
                     <h1>{title}</h1>
                       <>
+                      <Row>
                       {questions.map((question, key, j) => (
-                        <div key={j}>
-                         <Row>
+                        <div style={{width: '50%' }} key={j}>
                           <Col col={6}>
                             <h2>{question.questionTitle}</h2>
-                            <div style={{width:'250px', height: '250px'}}>
+                            <div>
                               <VictoryPie
                                 colorScale={['#cf4475', '#f79ebd', '#c3e3e8', '#b0f08b', '#6fc969' ]}
                                 data={[
@@ -56,7 +55,6 @@ const SurveyDashboard = () => {
                               />
                             </div>
                           </Col>
-                        </Row>
                       <>
                       {question.answerOptions.map((answer, k) => (
                         <div key={k}>
@@ -66,6 +64,7 @@ const SurveyDashboard = () => {
                       ))}
                     </>
                   </div>))}
+                  </Row>
                   </>
                 </div>
               </div>
