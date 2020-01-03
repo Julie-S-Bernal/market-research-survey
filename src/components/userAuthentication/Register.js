@@ -13,6 +13,9 @@ const FormWrapper=styled.div`
   background-color: #ffffff;
   border-radius: 5px;
   box-shadow: 0 15px 35px rgba(50,50,93,.1),0 5px 15px rgba(0,0,0,.07);
+  background: rgba(255,255,255,0.4);
+  border-bottom: 1px solid rgba(225,225,225,0.5);
+  z-index: 1000;
 
   .formInput{
     position: relative;
@@ -53,6 +56,13 @@ const FormWrapper=styled.div`
   }
 `;
 
+const ButtonWrapper=styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+`
+
 const Register = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -80,7 +90,9 @@ const Register = (props) => {
               <input className='formInput' type="email" name='email' onChange={(event) => setEmail(event.target.value)} ></input>
               <label htmlFor='email'>Password: </label>
               <input className='formInput' type="password" name='password' onChange={(event) => setPassword(event.target.value)} ></input>
-              <input className='button' type='submit' value='register' />
+              <ButtonWrapper>
+                <input className='button' type='submit' value='register' />
+              </ButtonWrapper>
               {registerError && <span>You could not be registered, try again! (╥_╥)</span>}
             </form>
           </FormWrapper>

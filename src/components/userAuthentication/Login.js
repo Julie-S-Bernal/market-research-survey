@@ -56,6 +56,13 @@ const FormWrapper=styled.div`
   }
 `;
 
+const ButtonWrapper=styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+`
+
 
 const Login = (props) => {
   const [email, setEmail] = useState('');
@@ -84,7 +91,9 @@ const Login = (props) => {
               <input className='formInput' type="email" name='email' onChange={(event) => setEmail(event.target.value)} ></input>
               <label htmlFor='email'>Password: </label>
               <input className='formInput'type="password" name='password' onChange={(event) => setPassword(event.target.value)} ></input>
-              <input className='button' type='submit' value='login' />
+              <ButtonWrapper>
+                <input className='button' type='submit' value='login' />
+              </ButtonWrapper>
               {loginError && <span>Something went wrong! (╥_╥) </span>}
             </form>
           </FormWrapper>
