@@ -41,7 +41,7 @@ const SurveyDashboard = () => {
                           <div style={{width: '50%' }} key={j}>
                             <Col col={6}>
                               <h2>{question.questionTitle}</h2>
-                              <div>
+                              {/* <div> */}
                                 <VictoryPie
                                   colorScale={[
                                     '#cf4475',
@@ -50,6 +50,7 @@ const SurveyDashboard = () => {
                                     '#b0f08b',
                                     '#6fc969'
                                   ]}
+                                  style={{ labels: { fontSize: 20, fill: "white" } }}
                                   data={[
                                     { x: questions[key].answerOptions[0].text, y: questions[key].answerOptions[0].selectedByRespondents },
                                     { x: questions[key].answerOptions[1].text, y: questions[key].answerOptions[1].selectedByRespondents },
@@ -58,12 +59,14 @@ const SurveyDashboard = () => {
                                     { x: questions[key].answerOptions[4].text, y: questions[key].answerOptions[2].selectedByRespondents },
                                   ]}
                                 />
-                              </div>
+                              {/* </div> */}
                             </Col>
                             {question.answerOptions.map((answer, k) => (
                               <div key={k}>
-                                <p>{answer.text}</p>
-                                <p>Selected by respondent: <span>{answer.selectedByRespondents}</span></p>
+                                <p>
+                                  <span>{answer.text}</span> was selected by:
+                                  <span>{answer.selectedByRespondents}</span> Respondant
+                                </p>
                               </div>
                             ))}
                           </div>
